@@ -10,6 +10,9 @@ include "partials/head.php";
       <?php foreach ($database as $album) { ?>
         <div class="album">
           <img src="<?php echo $album["poster"]; ?>" alt="copertina album">
+          <h2><?php echo $album["title"]; ?></h2>
+          <p><?php echo $album["author"]; ?></p>
+          <span><?php echo $album["year"]; ?></span>
         </div>
       <?php } ?>
     </div>
