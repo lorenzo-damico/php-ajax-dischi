@@ -17,8 +17,17 @@ main {
     align-items: center;
     text-align: center;
 
-    img {
+    &-copertina {
       width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &-autore, &-anno {
+      color: $info_color;
+      font-size: 18px;
     }
   }
 }

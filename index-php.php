@@ -18,10 +18,12 @@ include "partials/header.php";
           <?php if (!empty($database)) { ?>
             <?php foreach ($database as $album) { ?>
               <div class="album">
-                <img src="<?php echo $album["poster"]; ?>" alt="copertina album">
+                <div class="album-copertina">
+                  <img src="<?php echo $album["poster"]; ?>" alt="copertina album">
+                </div>
                 <h2><?php echo $album["title"]; ?></h2>
-                <p><?php echo $album["author"]; ?></p>
-                <span><?php echo $album["year"]; ?></span>
+                <div class="album-autore"><?php echo $album["author"]; ?></div>
+                <div class="album-anno"><?php echo $album["year"]; ?></div>
               </div>
             <?php } ?>
           <?php } else { ?>
@@ -33,6 +35,6 @@ include "partials/header.php";
       </div>
     </main>
 
-    
+
   </body>
 </html>

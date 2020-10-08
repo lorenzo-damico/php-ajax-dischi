@@ -16100,9 +16100,51 @@ module.exports = g;
 
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-var handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
+var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
-$(document).ready(function () {});
+$(document).ready(function () {
+  // Funzione che stampa i dischi con handlebars.
+  function renderAlbums(data) {
+    var source = $("#album-template").html();
+    var template = Handlebars.compile(source);
+
+    for (var i = 0; i < data.length; i++) {
+      var context = {
+        "poster": data[i].poster,
+        "title": data[i].title,
+        "author": data[i].author,
+        "year": data[i].year
+      };
+      var html = template(context);
+      $(".albums").append(html);
+    }
+  } // Funzione che stampa l'errore.
+
+
+  function renderError() {
+    var source = $("#error-template").html();
+    var template = Handlebars.compile(source);
+    var html = template();
+    $(".albums").append(html);
+  } // 1. Effettuo una chiamata ajax all'api che ho creato per ottenere le info
+  //    degli album.
+
+
+  $.ajax({
+    "url": "http://localhost/php-ajax-dischi/api/server.php",
+    "method": "GET",
+    "success": function success(data) {
+      if (data.length != 0) {
+        renderAlbums(data);
+      } else {
+        renderError();
+      }
+    },
+    "error": function error(err) {
+      alert("Errore!");
+    }
+  });
+});
 
 /***/ }),
 
