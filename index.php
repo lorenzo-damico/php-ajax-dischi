@@ -14,6 +14,9 @@ include "partials/header.php";
 
     <main>
       <div class="container">
+        <select id="select-author">
+
+        </select>
         <div class="albums">
 
 
@@ -46,6 +49,12 @@ include "partials/header.php";
       </div>
     </script>
     <!-- /TEMPLATE ERRORE -->
+
+    <!-- TEMPLATE SELECT -->
+    <script id="select-template" type="text/x-handlebars-template">
+      <option value="{{author}}">{{author}}</option>
+    </script>
+    <!-- /TEMPLATE SELECT -->
 
     <script src="dist/app.js" charset="utf-8"></script>
   </body>

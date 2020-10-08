@@ -3,13 +3,34 @@ const Handlebars = require("handlebars");
 
 $(document).ready(function () {
 
+  // Funzione che genera la select.
+  function printSelect(authors) {
+
+
+    var source = $("#select-template").html();
+    var template = Handlebars.compile(source);
+
+    for (var i = 0; i < authors.length; i++) {
+
+      var context = {
+        "author": authors[i]
+      };
+
+      var html = template(context);
+      $("#select-author").append(html);
+    }
+  }
+
   // Funzione che stampa i dischi con handlebars.
   function renderAlbums(data) {
 
     var source = $("#album-template").html();
     var template = Handlebars.compile(source);
 
+    var authors = [];
     for (var i = 0; i < data.length; i++) {
+
+      authors.push(data[i].author);
 
       var context = {
         "poster": data[i].poster,
@@ -21,6 +42,8 @@ $(document).ready(function () {
       var html = template(context);
       $(".albums").append(html);
     }
+
+    printSelect(authors);
   }
 
   // Funzione che stampa l'errore.

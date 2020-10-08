@@ -35,13 +35,15 @@ header .logo img {
 main {
   padding-top: 60px;
 }
-
-.albums {
+main #select-author {
+  margin: 20px 10px;
+}
+main .albums {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.albums .album {
+main .albums .album {
   width: 180px;
   height: 350px;
   background-color: #2E3A46;
@@ -52,13 +54,13 @@ main {
   align-items: center;
   text-align: center;
 }
-.albums .album-copertina {
+main .albums .album-copertina {
   width: 100%;
 }
-.albums .album-copertina img {
+main .albums .album-copertina img {
   width: 100%;
 }
-.albums .album-autore, .albums .album-anno {
+main .albums .album-autore, main .albums .album-anno {
   color: #6D7073;
   font-size: 18px;
 }
