@@ -120,7 +120,7 @@ $(document).ready(function () {
   // INIZIO EVENTI
 
   // All'evento change sulla select, effettuo un'altra chiamata ajax.
-  $(document).on("change", "#select-author",
+  $("#select-author").change(
     function () {
       // Salvo il valore della select e pulisco la sezione albums.
       var authorValue = $(this).val();
