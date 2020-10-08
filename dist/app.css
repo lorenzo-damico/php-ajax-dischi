@@ -1,4 +1,4 @@
-* {
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap);* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -12,6 +12,7 @@
 
 body {
   font-family: "Lato", sans-serif;
+  background-color: #1E2D3B;
 }
 
 h2 {
@@ -21,8 +22,7 @@ h2 {
   margin: 15px 0;
 }
 
-p,
-span {
+p, span {
   color: #6D7073;
   font-size: 18px;
 }
@@ -30,17 +30,14 @@ span {
 header {
   background-color: #2E3A46;
 }
-
 header .logo {
   width: 50px;
 }
-
 header .logo img {
   width: 100%;
 }
 
 main {
-  background-color: #1E2D3B;
   padding-top: 60px;
 }
 
@@ -49,7 +46,6 @@ main {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .albums .album {
   width: 180px;
   height: 350px;
@@ -61,8 +57,6 @@ main {
   align-items: center;
   text-align: center;
 }
-
 .albums .album img {
   width: 100%;
 }
-

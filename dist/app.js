@@ -86,21 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/app.js":
-/*!********************!*\
-  !*** ./src/app.js ***!
-  \********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./src/app.scss":
-/*!**********************!*\
-  !*** ./src/app.scss ***!
-  \**********************/
+/***/ "./src/css/app.scss":
+/*!**************************!*\
+  !*** ./src/css/app.scss ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -108,15 +97,26 @@
 
 /***/ }),
 
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ 0:
-/*!*****************************************!*\
-  !*** multi ./src/app.js ./src/app.scss ***!
-  \*****************************************/
+/*!************************************************!*\
+  !*** multi ./src/js/app.js ./src/css/app.scss ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Utente\Desktop\boolean\php-ajax-dischi\src\app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\boolean\php-ajax-dischi\src\app.scss */"./src/app.scss");
+__webpack_require__(/*! C:\Users\Utente\Desktop\boolean\php-ajax-dischi\src\js\app.js */"./src/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\boolean\php-ajax-dischi\src\css\app.scss */"./src/css/app.scss");
 
 
 /***/ })
