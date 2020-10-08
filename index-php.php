@@ -32,5 +32,7 @@ include "partials/header.php";
         </div>
       </div>
     </main>
+
+    
   </body>
 </html>
