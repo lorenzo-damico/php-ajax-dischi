@@ -16110,19 +16110,17 @@ $(document).ready(function () {
     var authors = [];
 
     for (var i = 0; i < data.length; i++) {
-      authors.push(data[i].author);
-    } // Stampo con handlebars le opzioni nella select.
+      if (!authors.includes(data[i].author)) {
+        authors.push(data[i].author); // Stampo con handlebars le opzioni nella select.
 
-
-    var source = $("#select-template").html();
-    var template = Handlebars.compile(source);
-
-    for (var i = 0; i < authors.length; i++) {
-      var context = {
-        "author": authors[i]
-      };
-      var html = template(context);
-      $("#select-author").append(html);
+        var source = $("#select-template").html();
+        var template = Handlebars.compile(source);
+        var context = {
+          "author": data[i].author
+        };
+        var html = template(context);
+        $("#select-author").append(html);
+      }
     }
   } // Funzione che stampa tutti gli album con handlebars.
 
@@ -16149,29 +16147,6 @@ $(document).ready(function () {
     var template = Handlebars.compile(source);
     var html = template();
     $(".albums").append(html);
-  } // Funzione che filtra gli album per autore.
-
-
-  function filterAuthors(data, authorValue) {
-    // Se la value inserita è "All", stampo tutto.
-    if (authorValue == "All") {
-      renderAlbums(data); // Altrimenti ciclo gli album e stampo solo quelli con l'autore corrispondente alla value.
-    } else {
-      for (var i = 0; i < data.length; i++) {
-        if (authorValue == data[i].author) {
-          var source = $("#album-template").html();
-          var template = Handlebars.compile(source);
-          var context = {
-            "poster": data[i].poster,
-            "title": data[i].title,
-            "author": data[i].author,
-            "year": data[i].year
-          };
-          var html = template(context);
-          $(".albums").append(html);
-        }
-      }
-    }
   } // FINE FUNZIONI
   // INIZIO CODICE
   // Effettuo una chiamata ajax all'api che ho creato per ottenere le info
@@ -16197,15 +16172,18 @@ $(document).ready(function () {
   // INIZIO EVENTI
   // All'evento change sulla select, effettuo un'altra chiamata ajax.
 
-  $(document).on("change", "#select-author", function () {
+  $("#select-author").change(function () {
     // Salvo il valore della select e pulisco la sezione albums.
     var authorValue = $(this).val();
     $(".albums").html("");
     $.ajax({
       "url": "http://localhost/php-ajax-dischi/api/server.php",
+      "data": {
+        "author": authorValue
+      },
       "method": "GET",
       "success": function success(data) {
-        filterAuthors(data, authorValue);
+        renderAlbums(data);
       },
       "error": function error(err) {
         alert("Errore!");

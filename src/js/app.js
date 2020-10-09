@@ -10,22 +10,24 @@ $(document).ready(function () {
 
     // Creo array contenente gli autori dei dischi presenti nel database.
     var authors = [];
+
     for (var i = 0; i < data.length; i++) {
-      authors.push(data[i].author);
-    }
 
-    // Stampo con handlebars le opzioni nella select.
-    var source = $("#select-template").html();
-    var template = Handlebars.compile(source);
+      if (!authors.includes(data[i].author)) {
 
-    for (var i = 0; i < authors.length; i++) {
+        authors.push(data[i].author);
 
-      var context = {
-        "author": authors[i]
-      };
+        // Stampo con handlebars le opzioni nella select.
+        var source = $("#select-template").html();
+        var template = Handlebars.compile(source);
 
-      var html = template(context);
-      $("#select-author").append(html);
+        var context = {
+          "author": data[i].author
+        };
+
+        var html = template(context);
+        $("#select-author").append(html);
+      }
     }
   }
 
@@ -59,34 +61,6 @@ $(document).ready(function () {
     $(".albums").append(html);
   }
 
-  // Funzione che filtra gli album per autore.
-  function filterAuthors(data, authorValue) {
-    // Se la value inserita è "All", stampo tutto.
-    if (authorValue == "All") {
-      renderAlbums(data);
-
-    // Altrimenti ciclo gli album e stampo solo quelli con l'autore corrispondente alla value.
-    } else {
-
-      for (var i = 0; i < data.length; i++) {
-        if (authorValue == data[i].author) {
-
-          var source = $("#album-template").html();
-          var template = Handlebars.compile(source);
-
-          var context = {
-            "poster": data[i].poster,
-            "title": data[i].title,
-            "author": data[i].author,
-            "year": data[i].year
-          };
-
-          var html = template(context);
-          $(".albums").append(html);
-        }
-      }
-    }
-  }
   // FINE FUNZIONI
 
   // INIZIO CODICE
@@ -129,9 +103,12 @@ $(document).ready(function () {
       $.ajax(
         {
           "url": "http://localhost/php-ajax-dischi/api/server.php",
+          "data": {
+            "author": authorValue
+          },
           "method": "GET",
           "success": function (data) {
-            filterAuthors(data, authorValue);
+            renderAlbums(data);
           },
           "error": function (err) {
             alert("Errore!");
